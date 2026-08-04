@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/lagaat/">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Type one mandi bill exactly as printed and get every charge restated in rupees and per cent — each naming what it is a percentage of — plus your landed cost per sellable kg after the home re-weigh and cull, on one printed A4 card. Free and private: every file this page loads is served from this site, no third party is contacted, and nothing you type leaves the page.">
+
+  <meta property="og:title" content="Mandi bill to cost per kg — lagaat">
+  <meta property="og:description" content="Every mandi charge as ₹ and %, and the landed cost per kilo you can actually sell after the home re-weigh. Nothing you type leaves the page.">
+  <meta property="og:type" content="website">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="lagaat">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <title>Mandi Charges Calculation Per Kg — Bill to Landed Cost — lagaat</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+      font-feature-settings: "tnum"; }
+    #seo-landing { max-width: 760px; margin: 0 auto; padding: 24px 20px 8px; line-height: 1.55;
+      color: #241812; background: #FDF6F0; }
+    #seo-landing h1 { font-size: 1.5rem; color: #7A3410; margin: 0 0 10px; line-height: 1.25; }
+    #seo-landing h2 { font-size: 1.05rem; margin: 22px 0 6px; }
+    #seo-landing code { background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 4px; }
+    #seo-landing table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 8px 0; }
+    #seo-landing th, #seo-landing td { border: 1px solid #94715C; padding: 6px 8px; text-align: left; }
+    #seo-landing th { background: #F3E2D5; }
+    #seo-landing .muted { color: #5F4A3E; font-size: 0.9rem; }
+    #seo-landing .wrap { overflow-x: auto; }
+    #flutter-app { height: 82vh; min-height: 540px; border-top: 3px solid #7A3410; }
+    @media (prefers-color-scheme: dark) {
+      #seo-landing { color: #F2E6DC; background: #191210; }
+      #seo-landing h1 { color: #EE9A5E; }
+      #seo-landing code { background: rgba(255,255,255,0.12); }
+      #seo-landing th, #seo-landing td { border-color: #856A5A; }
+      #seo-landing th { background: #2F2119; }
+      #seo-landing .muted { color: #C0AA9A; }
+    }
+  </style>
+
+  <!-- The Flutter canvas is not crawlable, so the facts live in real HTML plus
+       JSON-LD. Nothing on this page contacts a third party: CanvasKit, the
+       fonts and the font-fallback base are all served from this origin. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "lagaat",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, Windows, macOS, Linux, Android, iOS",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "description": "A mandi bill decoder for vegetable buyers. Type one settlement slip exactly as printed — the lot rates, the billed weights, the lumped market charges, the tempo share and the crate rent — and lagaat restates every charge as a rupee figure and a percentage that names its own denominator, then divides your total outlay by the kilos you can actually sell after the home re-weigh and the cull. It prints one A4 cost card."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate mandi charges per kg?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Add up the charges your slip actually prints — the lumped market charges, your share of the tempo, the crate rent — and divide them across the lots in proportion to what each lot cost, or to what each weighed. lagaat splits them by largest remainder so the shares add to exactly the total you typed, then adds each lot's share to its goods value and divides by the kilos left after your home re-weigh and cull. That last division is the point: charges per BILLED kilo flatter you by whatever the load lost on the way home." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the card show every charge twice, as rupees and as a percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because a rupee figure alone does not tell you whether ₹120 of market charges is a lot, and a percentage alone hides what it is a percentage OF. Every percentage on the card names its denominator on the same line — for example 2.86% of lot value for this trip (₹4,200.00) — so two figures that look comparable really are." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I did not weigh the load at home?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Then that lot's cost per kg is computed from the billed weight, the card says so in words on that line, and the re-weigh cell prints \"not measured\" rather than a zero. A blank field is never treated as zero anywhere in lagaat. The figure you get is the optimistic one, by however much the load actually lost, and the printed card says that too." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my total does not match what I paid?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The card says \"Does not match what you typed\", prints the difference, and shows the working: goods plus charges equals the computed total, against the figure you entered. It does not say you were short-changed, overcharged or cheated, because it cannot know. A mismatch is almost always a charge you forgot to type, your own rounding, or a figure misread at five in the morning." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does lagaat know today's mandi rates?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, and it never will. lagaat ships zero data: no pre-filled commission percentage, no default hamali, no typical shrinkage, no rate table. Mandi charges differ by market, by agent, by commodity and by day, and any number we pre-filled would be a guess wearing the costume of a fact. Every figure on every screen is one you typed." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I only remember the bill and do not have it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is a \"from memory\" mode, and the printed card is stamped RECONSTRUCTED FROM MEMORY — NOT FROM A BILL across its header band, in the accent colour, at body-text size. The limit goes on the paper, above the numbers it qualifies, not into a footnote. A reconstruction is not evidence of what a bill said." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it keep a khata or track what I owe the agent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No, deliberately. lagaat records one purchase you have already paid for. There is no credit, udhaar or dues ledger of any kind, no counterparty balance, and nothing about staff, hamali wages or attendance. It also has no selling side: no margin, no retail price, no suggestion about what to charge." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does my data go?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nowhere. The full app is local-first: your data is a SQLite file on your own machine and the app runs on localhost. There is no account, no sync, no encryption and nothing is uploaded. This web demo keeps everything in your browser tab and a refresh resets it." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <main id="seo-landing">
+    <h1>Mandi bill to landed cost per sellable kg — every charge as ₹ and %, after re-weigh and cull</h1>
+
+    <p><strong>lagaat</strong> is for the person in a sabzi shop, thela or small vegetable
+    retail family who does the pre-dawn mandi run and comes home at 7am with a settlement
+    slip, a stack of crates, and no idea what the load actually cost per kilo.</p>
+
+    <p>You type <strong>one bill, exactly as it is printed</strong> — <strong>eight fields
+    for the trip, and up to six more for each lot on the slip</strong>. A three-lot run is
+    around twenty entries; only two of the six per lot are required.
+    lagaat restates every deduction as a rupee figure <em>and</em> a percentage that names
+    its own denominator, and divides your whole outlay by the kilos you can actually sell.</p>
+
+    <h2>The eight trip fields, and the six per lot</h2>
+    <p>Per trip: the lumped <strong>market charges</strong> (the one deductions figure your
+    slip prints — which market charges a buyer is levied differs by state and by commodity,
+    so lagaat does not tell you what is in it), your <strong>tempo share</strong>, the
+    <strong>crate rent</strong>, and optionally the <strong>amount you actually paid</strong>.
+    Per lot: the <strong>rate</strong> on the slip, the <strong>billed weight</strong>, and —
+    if you measured them — the <strong>home re-weigh</strong> and the <strong>cull</strong>.
+    Only the rate and the billed weight are required. Everything you skip prints as the
+    literal words <code>not measured</code>, never as a zero.</p>
+
+    <h2>A worked example</h2>
+    <p>One run: market charges <code>₹120.00</code>, tempo <code>₹300.00</code>, crate rent
+    <code>₹80.00</code> — <strong>₹500.00 of charges</strong> in total. Three lots:</p>
+
+    <div class="wrap">
+    <table>
+      <thead>
+        <tr><th>Lot</th><th>Slip rate</th><th>Billed</th><th>Re-weigh</th><th>Cull</th><th>Sellable</th><th>Landed ₹/sellable kg</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Tomato</td><td>₹24.00/kg</td><td>50.000 kg</td><td>48.500 kg</td><td>1.500 kg</td><td>47.000 kg</td><td><strong>₹28.57/kg</strong> (+19.04%)</td></tr>
+        <tr><td>Onion</td><td>₹18.00/kg</td><td>100.000 kg</td><td>99.000 kg</td><td>not measured</td><td>99.000 kg</td><td><strong>₹20.35/kg</strong> (+13.06%)</td></tr>
+        <tr><td>Beans</td><td>₹60.00/kg</td><td>20.000 kg</td><td>not measured</td><td>not measured</td><td>20.000 kg</td><td><strong>₹67.14/kg</strong> (+11.90%)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p class="muted">Goods came to <code>₹4,200.00</code> and the charges to
+    <code>₹500.00</code>, so the trip cost <code>₹4,700.00</code>. The charges are
+    <strong>11.90% of lot value for this trip (₹4,200.00)</strong> — the percentage names
+    what it is a percentage of, every time, on every line. Market charges alone are
+    <strong>2.86% of the same</strong>.</p>
+
+    <p class="muted">The beans row is the honest one. Nobody weighed that lot at home, so
+    its sellable weight is the billed weight, its shrink cell reads <code>not measured</code>
+    rather than 0%, and its ₹67.14/kg is <em>optimistic by however much the lot actually
+    lost</em>. The card prints that sentence on the same page as the number.</p>
+
+    <h2>Why "per sellable kg" and not "per kg"</h2>
+    <p>The tomato lot was billed at 50 kg. Your own scale said 48.5 kg and 1.5 kg went in
+    the bin, so 47 kg is what you can sell. Dividing by 50 gives ₹26.86 and dividing by 47
+    gives ₹28.57 — a rupee and seventy paise a kilo of difference, on one lot, on one
+    morning. lagaat always divides by the second number when you have measured it, and
+    always tells you in words which number it used.</p>
+
+    <h2>How the charges are split</h2>
+    <p>The three charges are pooled and split across the lots by <strong>largest
+    remainder</strong>, in proportion to each lot's value (or its weight, if you prefer),
+    so the shares add to <em>exactly</em> the total you typed — never ₹499.99. An individual
+    lot can sit ±1 paisa from charge × its share, and that is the price of the shares
+    summing exactly. If a lot has no rate typed, it takes no share at all: the card says so
+    by name and refuses to print a cost per kilo for it, rather than quietly printing
+    ₹0.00/kg as a fact.</p>
+
+    <h2>What lagaat will not do</h2>
+    <p>No credit, <strong>udhaar</strong> or dues ledger of any kind. No staff, attendance
+    or hamali wages. No live rates: the app contacts no server of its own, and this page
+    contacts no third party — CanvasKit and every font are served from this site, not from
+    Google. Once loaded it needs no connection.  The one remaining exception is stated
+    plainly: if the printed card ever needed a glyph missing from the bundled fonts, the
+    engine would look for it under this site's own <code>assets/</code>, so a missing glyph
+    fails visibly rather than fetching from a font CDN. No verdict: it never says a rate was fair, a charge
+    was legitimate, a loss was normal or a buy was good. No accusation: when the total does
+    not tie it prints the working and stops. No APMC statute or legal-maximum-commission
+    logic. And no selling side — where you sell it is not this app's business.</p>
+
+    <p><strong>lagaat ships zero facts.</strong> There is no table of typical mandi charges,
+    no default commission percentage and no default shrinkage. Every number you see is one
+    you typed.</p>
+
+    <h2>Try it below</h2>
+    <p>The calculator below is loaded with a made-up run for a market that does not exist.
+    Edit it, type your own slip, print the card — nothing you type leaves this page.</p>
+  </main>
+
+  <div id="flutter-app"></div>
+
+  <script src="flutter.js" defer></script>
+  <!-- buildConfig is injected here at build time from the generated
+       flutter_bootstrap.js (scripts/build-web.sh). Without it the loader throws
+       "requires _flutter.buildConfig" and the app below never mounts. -->
+  <script>window._flutter=window._flutter||{};_flutter.buildConfig = {"engineRevision":"c416acfeb8126e097f758c664aaa3da929e27da0","builds":[{"compileTarget":"dart2js","renderer":"canvaskit","mainJsPath":"main.dart.js"},{}],"useLocalCanvasKit":true};</script>
+  <script>
+    window.addEventListener("load", function () {
+      _flutter.loader.load({ config: {
+        hostElement: document.getElementById("flutter-app"),
+        // CONTRACT 3b rule 9: unset, this defaults to https://fonts.gstatic.com/s/
+        // and fires on any glyph missing from the bundled fonts. Pinned to this
+        // origin so no third party is ever contacted.
+        fontFallbackBaseUrl: "assets/fallback-fonts/"
+      } });
+    });
+  </script>
+</body>
+</html>
